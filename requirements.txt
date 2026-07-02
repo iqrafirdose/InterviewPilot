@@ -1,0 +1,8 @@
+streamlit
+groq
+python-dotenv
+supabase
+streamlit-mic-recorder
+cognee
+SpeechRecognition
+openai

@@ -6,7 +6,7 @@ from datetime import datetime
 from interviewer import generate_question, get_feedback, ROLE_CONTEXT
 from memory import save_answer, get_user_profile, get_weak_topics, setup_memory, save_full_state, load_full_state, get_topic_study_plan, save_full_state_sync, load_full_state_sync, save_full_state_sync, load_full_state_sync
 
-st.set_page_config(page_title="RecallReady", page_icon="R", layout="wide")
+st.set_page_config(page_title="InterviewPilot", page_icon="R", layout="wide")
 
 st.markdown("""
 <style>
@@ -293,15 +293,14 @@ def load_role_state(role_d):
 if not st.session_state.user_setup_done:
     st.markdown("""
     <div class="hero-card">
-        <h1>RecallReady</h1>
-        <p>The AI interviewer that remembers you. Practice smarter — it tracks your weak spots,
-        adapts to your level, and gets harder as you improve.</p>
+        <h1>InterviewPilot</h1>
+        <p>InterviewPilot — The AI interviewer that remembers your progress, targets weak areas, and helps you improve over time.</p>
     </div>
     """, unsafe_allow_html=True)
 
     col1, col2 = st.columns([1, 1], gap="large")
     with col1:
-        returning = st.checkbox("I have used RecallReady before — load my memory")
+        returning = st.checkbox("I have used InterviewPilot before — load my memory")
         st.markdown('<div class="section-label" style="margin-top:8px;">Name</div>', unsafe_allow_html=True)
         st.text_input("Name", placeholder="e.g. Priya Sharma", label_visibility="collapsed", key="name_input")
 
@@ -309,7 +308,7 @@ if not st.session_state.user_setup_done:
             uid = st.session_state.generated_uid
             st.markdown(f"""
             <div class="user-id-box">
-                <div class="user-id-label">Your Unique RecallReady ID</div>
+                <div class="user-id-label">Your Unique InterviewPilot ID</div>
                 <div class="user-id-code">{uid}</div>
                 <div class="user-id-hint">
                     Save this — screenshot it or write it down.<br>
@@ -318,7 +317,7 @@ if not st.session_state.user_setup_done:
             </div>
             """, unsafe_allow_html=True)
         else:
-            st.markdown('<div class="section-label" style="margin-top:16px;">Your RecallReady ID</div>', unsafe_allow_html=True)
+            st.markdown('<div class="section-label" style="margin-top:16px;">Your InterviewPilot ID</div>', unsafe_allow_html=True)
             st.markdown('<div style="color:#6060a0;font-size:0.82rem;margin-bottom:6px;">Enter the exact same name and ID from your first session.</div>', unsafe_allow_html=True)
             st.text_input("Your ID", placeholder="e.g. A3F9B2C1", label_visibility="collapsed", key="uid_input")
 
@@ -346,7 +345,7 @@ if not st.session_state.user_setup_done:
             if not name:
                 st.error("Please enter your name.")
             elif returning and not st.session_state.uid_input.strip():
-                st.error("Please enter your RecallReady ID.")
+                st.error("Please enter your InterviewPilot ID.")
             elif role == "Select a Role":
                 st.error("Please select a role.")
             elif role == "Custom Role" and not custom_role_input.strip():
@@ -377,7 +376,7 @@ if not st.session_state.user_setup_done:
                 st.rerun()
 
     with col2:
-        st.markdown('<div class="section-label">Why RecallReady</div>', unsafe_allow_html=True)
+        st.markdown('<div class="section-label">Why InterviewPilot</div>', unsafe_allow_html=True)
         for title, desc in [
             ("Unique Memory Per User", "Each user gets a unique ID — your memory and progress are completely private"),
             ("Everything Saved Across Sessions", "Progress, history and study plan all reload when you return with your ID"),
@@ -398,7 +397,7 @@ else:
     with col_h1:
         st.markdown(f"""
         <div class="header-bar">
-            <span class="header-title">RecallReady</span>
+            <span class="header-title">InterviewPilot</span>
             <span class="badge">{role_display}</span>
             <span class="{diff_class}">{st.session_state.difficulty}</span>
             <span style="color:#7070a0;font-size:0.85rem;">{st.session_state.display_name} &middot; {st.session_state.experience_level}</span>
@@ -585,7 +584,7 @@ else:
         with side_col:
             st.markdown(f"""
             <div class="user-id-box" style="margin-bottom:16px;">
-                <div class="user-id-label">Your RecallReady ID</div>
+                <div class="user-id-label">Your InterviewPilot ID</div>
                 <div class="user-id-code">{st.session_state.user_uid}</div>
                 <div class="user-id-hint">Save this to restore your memory and progress next session.</div>
             </div>

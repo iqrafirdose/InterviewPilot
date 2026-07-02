@@ -149,7 +149,7 @@ def _dataset(user_uid, role):
 
 async def save_answer(user_uid, role, question, answer, feedback, score, display_name=""):
     memory_text = f"""
-RecallReady Interview Log
+InterviewPilot Interview Log
 User ID: {user_uid}
 Name: {display_name}
 Role: {role}
